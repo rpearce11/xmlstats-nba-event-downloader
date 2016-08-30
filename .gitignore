@@ -1,6 +1,12 @@
 # dont source control the config file with access token details
 config.py
 
+# logs
+*.log
+
+# data created from download
+*.csv
+
 # ignore PyCharm config
 .idea/
 
