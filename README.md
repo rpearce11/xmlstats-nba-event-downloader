@@ -5,7 +5,11 @@ This project is me learning as I go about writing better python code as I go and
 
 There may be dependencies which are not defined correctly this will be updated as I go along.
 
-The project needs a config.py file adding to work which should be of a format like this
+To setup:
+
+1. Clone the repo
+2. add directories for "data" and "logging"
+3. add a config.py file with the following contents
 
 accessToken = 'my token'
 
@@ -21,3 +25,4 @@ To Do:
 4. Improve unit test coverage
 5. Package the code
 6. Possibly automate the deployment
+7. Fix the install as a package with config file and directories as above
