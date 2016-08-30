@@ -17,12 +17,4 @@ user_agent = 'my user agent'
 
 Details of the above can be found at the site https://erikberg.com/account/token and https://erikberg.com/api
 
-To Do:
-
-1. Migrate this list to github issues
-2. Investigate pythonic naming conventions for files, functions and methods
-3. Check if the Object Orientation is well used in the project
-4. Improve unit test coverage
-5. Package the code
-6. Possibly automate the deployment
-7. Fix the install as a package with config file and directories as above
+To Do: See Issues
