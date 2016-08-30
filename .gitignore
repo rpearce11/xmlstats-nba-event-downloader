@@ -1,5 +1,8 @@
-#dont source control the config file with access token details
+# dont source control the config file with access token details
 config.py
+
+# ignore PyCharm config
+.idea/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
