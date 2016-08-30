@@ -1,4 +1,4 @@
-#dont source control the config file with acess token details
+#dont source control the config file with access token details
 config.py
 
 # Byte-compiled / optimized / DLL files
