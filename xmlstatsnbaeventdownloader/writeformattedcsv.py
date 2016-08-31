@@ -3,7 +3,6 @@ __author__ = 'Rich Pearce'
 import datetime
 import codecs
 import logging
-import loggerutil
 
 class writeformattedcsv():
 
