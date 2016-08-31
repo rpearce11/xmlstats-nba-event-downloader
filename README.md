@@ -15,6 +15,8 @@ accessToken = 'my token'
 
 user_agent = 'my user agent'
 
+-- Adding the files and directorys can be done via the setup.sh script, then you just need to added the variables above.
+
 Details of the above can be found at the site https://erikberg.com/account/token and https://erikberg.com/api
 
 To Do: See Issues
