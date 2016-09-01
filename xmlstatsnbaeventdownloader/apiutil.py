@@ -3,13 +3,13 @@ import urllib.request
 import urllib.error
 import json
 import logging
-import config
+from xmlstatsnbaeventdownloader import config
 
 __author__ = 'Rich Pearce'
 
 
 # example from the documentation: https://erikberg.com/account/token
-class apiutil():
+class ApiUtil:
 
     # setup logger
     logger = logging.getLogger('NBA API logger')
@@ -18,28 +18,29 @@ class apiutil():
     headers = {'Authorization': "Bearer " + config.accessToken,
                'User-agent': config.user_agent}
 
-    def callAPI(self, url):
-        responseDict = {'data': 'test', 'debug': 'true'}
+    def request(self, url):
+
+        response_dict = {'data': 'test', 'debug': 'true'}
 
         try:
             # add headers and req
             req = urllib.request.Request(url, headers=self.headers)
             response = urllib.request.urlopen(req)
-            jsonResponse = response.read()
-            response = jsonResponse.decode('utf-8')
-        except urllib.error.URLError as e:
-            self.logger.info(e.reason)
-            self.logger.info('Oops no service available at ' + str(url))
-            exit()
+            json_response = response.read()
+            response = json_response.decode('utf-8')
         except urllib.error.HTTPError:
             self.logger.info('Oops not a valid operation from the service ' +
                              str(url))
             exit()
+        except urllib.error.URLError as e:
+            self.logger.info(e.reason)
+            self.logger.info('Oops no service available at ' + str(url))
+            exit()
 
-        responseDict = json.loads(response)
+        response_dict = json.loads(response)
 
         self.logger.info("Call Request : " + str(url))
         print("Call Request : " + str(url))
-        self.logger.info("Call Response: " + str(responseDict))
+        self.logger.info("Call Response: " + str(response_dict))
 
-        return responseDict
+        return response_dict

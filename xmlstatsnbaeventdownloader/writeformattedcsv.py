@@ -5,35 +5,35 @@ import logging
 __author__ = 'Rich Pearce'
 
 
-class writeformattedcsv():
+class WriteFormattedCsv():
 
-    fileName = 'errorNoFileName'
+    file_name = 'errorNoFileName'
     # setup logger
     logger = logging.getLogger('NBA API logger')
 
     def __init__(self, name):
         self.logger.info(name)
-        self.fileName = name
+        self.file_name = name
 
-    def writeHeader(self):
-        dataFile = codecs.open(self.fileName, 'a', "utf-8")
-        dataFile.write("date,home,away,homescore,awayscore,homeq1,homeq2,"
-                       "homeq3,homeq4,awayq1,awayq2,awayq3,awayq4,"
-                       "pointspreadhome,pointspreadaway,seasonType\n")
-        dataFile.close()
+    def write_header(self):
+        data_file = codecs.open(self.file_name, 'a', "utf-8")
+        data_file.write("date,home,away,homescore,awayscore,homeq1,homeq2," +
+                        "homeq3,homeq4,awayq1,awayq2,awayq3,awayq4," +
+                        "pointspreadhome,pointspreadaway,seasonType\n")
+        data_file.close()
 
-    def writeEventDetails(self, eventDetails):
+    def write_event_details(self, event_details):
         # write to file appending
-        dataFile = codecs.open(self.fileName, 'a', "utf-8")
+        data_file = codecs.open(self.file_name, 'a', "utf-8")
 
-        self.logger.info(eventDetails)
+        self.logger.info(event_details)
 
-        date = eventDetails['events_date']
-        theDateTime = datetime.datetime.strptime(date[:10], "%Y-%m-%d")
-        theDate = datetime.datetime.strftime(theDateTime, "%Y%m%d")
+        date = event_details['events_date']
+        the_date_time = datetime.datetime.strptime(date[:10], "%Y-%m-%d")
+        the_date = datetime.datetime.strftime(the_date_time, "%Y%m%d")
 
         # Loop through each Event (https://erikberg.com/api/objects/event)
-        for evt in eventDetails['event']:
+        for evt in event_details['event']:
             # Get team objects (https://erikberg.com/api/objects/team)
 
             self.logger.info(evt)
@@ -43,50 +43,56 @@ class writeformattedcsv():
             away_team = evt['away_team']
             home_team = evt['home_team']
 
-            homeTeamAbbr = evt['home_team']['abbreviation']
-            awayTeamAbbr = evt['away_team']['abbreviation']
+            home_team_abbr = evt['home_team']['abbreviation']
+            away_team_abbr = evt['away_team']['abbreviation']
 
-            seasonType = evt['season_type']
-            eventStatus = evt['event_status']
+            season_type = evt['season_type']
+            event_status = evt['event_status']
 
-            self.logger.info(away_team['full_name'] + " abb:" + awayTeamAbbr +
-                             " @ " + home_team['full_name'] + " abb:" +
-                             homeTeamAbbr + " " + eventStatus)
+            self.logger.info(away_team['full_name'] + " abb:" +
+                             away_team_abbr + " @ " +
+                             home_team['full_name'] + " abb:" +
+                             home_team_abbr + " " + event_status)
 
-            if(eventStatus == "completed"):
+            if(event_status == "completed"):
 
-                homePointsScored = evt['home_points_scored']
-                awayPointsScored = evt['away_points_scored']
-                homePeriodScored = evt['home_period_scores']
-                awayPeriodScored = evt['away_period_scores']
+                home_points_scored = evt['home_points_scored']
+                away_points_scored = evt['away_points_scored']
+                home_period_scored = evt['home_period_scores']
+                away_period_scored = evt['away_period_scores']
 
-                concatEventDetails = theDate \
-                    + "," + homeTeamAbbr \
-                    + "," + awayTeamAbbr \
-                    + "," + str(homePointsScored) \
-                    + "," + str(awayPointsScored) \
-                    + "," + str(homePeriodScored[0]) \
-                    + "," + str(homePeriodScored[0] + homePeriodScored[1]) \
-                    + "," + str(homePeriodScored[0] + homePeriodScored[1] +
-                                homePeriodScored[2])\
-                    + "," + str(homePeriodScored[0] + homePeriodScored[1] +
-                                homePeriodScored[2] + homePeriodScored[3]) \
-                    + "," + str(awayPeriodScored[0]) \
-                    + "," + str(awayPeriodScored[0] + awayPeriodScored[1]) \
-                    + "," + str(awayPeriodScored[0] + awayPeriodScored[1] +
-                                awayPeriodScored[2]) \
-                    + "," + str(awayPeriodScored[0] + awayPeriodScored[1] +
-                                awayPeriodScored[2]+awayPeriodScored[3]) \
-                    + "," + str(homePointsScored - awayPointsScored) \
-                    + "," + str(awayPointsScored - homePointsScored) \
-                    + "," + seasonType
+                concat_event_details = the_date \
+                    + "," + home_team_abbr \
+                    + "," + away_team_abbr \
+                    + "," + str(home_points_scored) \
+                    + "," + str(away_points_scored) \
+                    + "," + str(home_period_scored[0]) \
+                    + "," + str(home_period_scored[0] +
+                                home_period_scored[1]) \
+                    + "," + str(home_period_scored[0] + home_period_scored[1] +
+                                home_period_scored[2])\
+                    + "," + str(home_period_scored[0] + home_period_scored[1] +
+                                home_period_scored[2] +
+                                home_period_scored[3]) \
+                    + "," + str(away_period_scored[0]) \
+                    + "," + str(away_period_scored[0] +
+                                away_period_scored[1]) \
+                    + "," + str(away_period_scored[0] + away_period_scored[1] +
+                                away_period_scored[2]) \
+                    + "," + str(away_period_scored[0] + away_period_scored[1] +
+                                away_period_scored[2]+away_period_scored[3]) \
+                    + "," + str(home_points_scored - away_points_scored) \
+                    + "," + str(away_points_scored - home_points_scored) \
+                    + "," + season_type
 
-                self.logger.info(concatEventDetails)
-                dataFile.write(concatEventDetails + "\n")
+                self.logger.info(concat_event_details)
+                data_file.write(concat_event_details + "\n")
             # else log the status
             else:
-                dataFile.write(theDate + "," + homeTeamAbbr + "," +
-                               awayTeamAbbr + "," + evt['event_status'] +
-                               "," + seasonType + "\n")
+                data_file.write(the_date + "," +
+                                home_team_abbr + "," +
+                                away_team_abbr + "," +
+                                evt['event_status'] + "," +
+                                season_type + "\n")
 
-        dataFile.close()
+        data_file.close()

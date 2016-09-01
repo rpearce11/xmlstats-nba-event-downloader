@@ -1,14 +1,16 @@
 import datetime
-import apiutil
-import endpoints
-import downloadbydaterange
+from xmlstatsnbaeventdownloader import endpoints, downloadbydaterange, \
+                                    apiutil, loggerutil
 
 __author__ = 'Rich Pearce'
 
 if __name__ == "__main__":
+
+    # force logger setup
+    logger = loggerutil.LoggerUtil()
     # check my details and log them
-    apiUtil = apiutil.apiutil()
-    apiUtil.callAPI(endpoints.me)
+    apiutil = apiutil.ApiUtil()
+    apiutil.request(endpoints.me)
 
     '''
     NBA 2014 - 2015 Season
@@ -21,5 +23,5 @@ if __name__ == "__main__":
     toDate = datetime.date(2014, 10, 29)
 
     # download a date range of NBA game
-    downloadController = downloadbydaterange.downloadbydaterange()
-    downloadController.getNBAData(fromDate, toDate)
+    downloadController = downloadbydaterange.DownloadByDateRange()
+    downloadController.get_nba_data(fromDate, toDate)

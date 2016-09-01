@@ -1,7 +1,7 @@
 __author__ = 'Rich Pearce'
 
 # mock from calling: https://erikberg.com/events.json?date=20150614&sport=nba
-mockSingleFutureEventData = {
+mock_single_future_event_data = {
     'events_date': '2015-06-14T00:00:00-04:00',
     'event': [{
         'start_date_time': '2015-06-14T03:45:56-04:00',
@@ -50,7 +50,7 @@ mockSingleFutureEventData = {
 }
 
 # mockData from here: https://erikberg.com/api/endpoints/events
-mockTwoEventsData = {
+mock_two_events_data = {
   "events_date": "2013-01-31T00:00:00-08:00",
   "events_count": 2,
   "event": [{
@@ -143,7 +143,7 @@ mockTwoEventsData = {
 }
 
 # single event Mock Data
-mockSingleEventData = {
+mock_single_event_data = {
   "events_date": "2013-01-31T00:00:00-08:00",
   "events_count": 1,
   "event": [{
