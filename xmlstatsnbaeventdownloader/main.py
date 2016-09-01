@@ -1,7 +1,6 @@
 import datetime
 import argparse
-from xmlstatsnbaeventdownloader import endpoints, downloadbydaterange, \
-                                    apiutil, loggerutil
+import endpoints, downloadbydaterange, apiutil, loggerutil
 
 __author__ = 'Rich Pearce'
 

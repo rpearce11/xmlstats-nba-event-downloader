@@ -1,4 +1,4 @@
-from xmlstatsnbaeventdownloader import writeformattedcsv, endpoints
+import writeformattedcsv, endpoints
 import datetime
 import time
 import logging
