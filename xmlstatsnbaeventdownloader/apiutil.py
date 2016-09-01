@@ -3,7 +3,6 @@ import urllib.request
 import urllib.error
 import json
 import logging
-from xmlstatsnbaeventdownloader import config
 
 __author__ = 'Rich Pearce'
 
@@ -11,12 +10,16 @@ __author__ = 'Rich Pearce'
 # example from the documentation: https://erikberg.com/account/token
 class ApiUtil:
 
-    # setup logger
-    logger = logging.getLogger('NBA API logger')
+    logger = None
+    headers = None
 
-    # header setup
-    headers = {'Authorization': "Bearer " + config.accessToken,
-               'User-agent': config.user_agent}
+    def __init__(self, access_token, user_agent):
+        # setup logger
+        self.logger = logging.getLogger('NBA API logger')
+
+        # header setup
+        self.headers = {'Authorization': "Bearer " + access_token,
+                        'User-agent': user_agent}
 
     def request(self, url):
 

@@ -1,6 +1,3 @@
-# dont source control the config file with access token details
-config.py
-
 # logs
 *.log
 /logs
