@@ -7,20 +7,18 @@ There may be dependencies which are not defined correctly this will be updated a
 
 To setup:
 
-1. Clone the repo: git clone https://github.com/rpearce11/xmlstatsnbaeventdownloader.git
-2. add a config.py file with the following contents
+git clone https://github.com/rpearce11/xmlstatsnbaeventdownloader.git
 
-accessToken = 'my token'
+To run:
 
-user_agent = 'my user agent'
-
--- Adding the config file can be done via the setup.sh script, then you just need to added the variables above.
+$ cd xmlstatsnbaeventdownloader/xmlstatsnbaeventdownloader
+$ python main.py "access_token" "user_agent"
 
 Details of the above can be found at the site https://erikberg.com/account/token and https://erikberg.com/api
 
-Once the above steps are complete:
+To test:
 
-* go to the tests directory and you can run "nosetests *.py" to check the unit tests complete
-* go to the xmlstatsnbaeventdownloader directory and run the main.py file to run a short download test - assuming your credentials are correct - you can check the log file in the logging dir
+$ cd ../tests
+$ nosetests *.py
 
 To Do: See Issues
