@@ -3,9 +3,11 @@ config.py
 
 # logs
 *.log
+/logs
 
 # data created from download
 *.csv
+/data
 
 # ignore PyCharm config
 .idea/
