@@ -31,7 +31,8 @@ class ApiUtil:
             response = urllib.request.urlopen(req)
             json_response = response.read()
             response = json_response.decode('utf-8')
-        except urllib.error.HTTPError:
+        except urllib.error.HTTPError as e:
+            self.logger.info(e.reason)
             self.logger.info('Oops not a valid operation from the service ' +
                              str(url))
             exit()
