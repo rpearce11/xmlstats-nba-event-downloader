@@ -1,9 +1,9 @@
-__author__ = 'Rich Pearce'
-
 import datetime
 import apiutil
 import endpoints
 import downloadbydaterange
+
+__author__ = 'Rich Pearce'
 
 if __name__ == "__main__":
     # check my details and log them
@@ -17,9 +17,9 @@ if __name__ == "__main__":
     June 4, 2015 – June 16, 2015 (Finals)
     '''
 
-    fromDate = datetime.date(2014,10,28)
-    toDate   = datetime.date(2014,10,29)
+    fromDate = datetime.date(2014, 10, 28)
+    toDate = datetime.date(2014, 10, 29)
 
     # download a date range of NBA game
     downloadController = downloadbydaterange.downloadbydaterange()
-    downloadController.getNBAData( fromDate, toDate )
+    downloadController.getNBAData(fromDate, toDate)
