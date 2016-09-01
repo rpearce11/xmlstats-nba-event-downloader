@@ -1,4 +1,5 @@
 import logging
+import os
 
 __author__ = 'Rich Pearce'
 
@@ -10,6 +11,8 @@ class LoggerUtil():
         logger = logging.getLogger('NBA API logger')
         logger.setLevel(logging.DEBUG)
         # create file handler which logs even debug messages
+        if not os.path.exists('../logs/'):
+            os.makedirs('../logs/')
         fh = logging.FileHandler('../logs/nbaapilogger.log')
         fh.setLevel(logging.DEBUG)
         # create console handler with a higher log level

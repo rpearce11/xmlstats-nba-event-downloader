@@ -2,6 +2,7 @@ from xmlstatsnbaeventdownloader import writeformattedcsv, endpoints, apiutil
 import datetime
 import time
 import logging
+import os
 
 __author__ = 'Rich Pearce'
 
@@ -14,6 +15,8 @@ class DownloadByDateRange():
     apiUtil = None
 
     def __init__(self):
+        if not os.path.exists('../data/'):
+            os.makedirs('../data/')
         self.csvWriter = \
             writeformattedcsv.WriteFormattedCsv('../data/data.csv')
         self.apiUtil = apiutil.ApiUtil()
