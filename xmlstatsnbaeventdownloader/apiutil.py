@@ -3,6 +3,8 @@ import urllib.request
 import urllib.error
 import json
 import logging
+import io
+import gzip
 
 __author__ = 'Rich Pearce'
 
@@ -19,7 +21,8 @@ class ApiUtil:
 
         # header setup
         self.headers = {'Authorization': "Bearer " + access_token,
-                        'User-agent': user_agent}
+                        'User-agent': user_agent,
+                        'Accept-encoding': 'gzip'}
 
     def request(self, url):
 
@@ -29,7 +32,12 @@ class ApiUtil:
             # add headers and req
             req = urllib.request.Request(url, headers=self.headers)
             response = urllib.request.urlopen(req)
-            json_response = response.read()
+            if response.info().get('Content-encoding') == 'gzip':
+                buf = io.BytesIO(response.read())
+                f = gzip.GzipFile(fileobj=buf)
+                json_response = f.read()
+            else:
+                json_response = response.read()
             response = json_response.decode('utf-8')
         except urllib.error.HTTPError as e:
             self.logger.info(e.reason)
