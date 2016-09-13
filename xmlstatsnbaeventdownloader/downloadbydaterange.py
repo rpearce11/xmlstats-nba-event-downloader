@@ -1,4 +1,5 @@
-import writeformattedcsv, endpoints
+import writeformattedcsv
+import endpoints
 import datetime
 import time
 import logging

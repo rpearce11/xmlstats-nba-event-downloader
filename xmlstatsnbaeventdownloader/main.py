@@ -1,6 +1,9 @@
 import datetime
 import argparse
-import endpoints, downloadbydaterange, apiutil, loggerutil
+import endpoints
+import downloadbydaterange
+import apiutil
+import loggerutil
 
 __author__ = 'Rich Pearce'
 
